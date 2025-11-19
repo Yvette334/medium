@@ -132,7 +132,7 @@ export default function EditorPage() {
               onChange={(e) => setContent(e.target.value)}
               rows={16}
               className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 font-mono focus:border-zinc-500 focus:outline-none focus:ring-2 focus:ring-zinc-200 resize-y"
-              placeholder="# Title&#10;&#10;Write your post using **Markdown** or regular text.## Tips- Publish when ready"
+              placeholder="# Title Write your post using **Markdown** or regular text.## Tips- Publish when ready"
             />
           </div>
           <div className="flex gap-2">
