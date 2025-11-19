@@ -13,9 +13,9 @@ export default function EditorPage() {
   const { data: session } = useSession();
   const router = useRouter();
   const [content, setContent] = useState('');
-  const [title, setTitle] = useState('My new post');
+  const [title, setTitle] = useState('');
   const [coverImage, setCoverImage] = useState('');
-  const [tags, setTags] = useState('nextjs,react');
+  const [tags, setTags] = useState('');
   const [saving, setSaving] = useState(false);
 
   function handleCoverImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
