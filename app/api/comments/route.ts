@@ -63,7 +63,17 @@ export async function POST(req: Request) {
   return NextResponse.json(mapComment(data), { status: 201 });
 }
 
-function mapComment(row: any) {
+type CommentRow = {
+  id: string;
+  post_id: string;
+  author_email: string;
+  author_name: string;
+  body: string;
+  parent_id: string | null;
+  created_at: string;
+};
+
+function mapComment(row: CommentRow) {
   return {
     id: row.id,
     postId: row.post_id,

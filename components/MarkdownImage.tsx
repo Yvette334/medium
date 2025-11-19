@@ -5,7 +5,7 @@ import Image from 'next/image';
 type MarkdownImageProps = {
   src?: string | null;
   alt?: string | null;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export function MarkdownImage({ src, alt, ...props }: MarkdownImageProps) {

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { CommentsSection } from '@/components/CommentsSection';
 import { SessionProvider } from 'next-auth/react';
 

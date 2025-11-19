@@ -113,7 +113,24 @@ export async function DELETE(_: Request, { params }: { params: Promise<{ id: str
   return NextResponse.json({ ok: true });
 }
 
-function mapPost(row: any) {
+type PostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  cover_image: string | null;
+  tags: string[];
+  author_email: string;
+  author_name: string;
+  published: boolean;
+  draft: boolean;
+  created_at: string;
+  updated_at: string;
+  claps: number;
+};
+
+function mapPost(row: PostRow) {
   return {
     id: row.id,
     slug: row.slug,

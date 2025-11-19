@@ -39,19 +39,18 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
   const [coverImage, setCoverImage] = useState('');
   const [tags, setTags] = useState('');
   const [published, setPublished] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    if (post && !isLoaded) {
-      console.log('Loading post data:', post);
+    if (post && !isInitialized) {
       setTitle(post.title || '');
       setContent(post.content || '');
       setCoverImage(post.coverImage || '');
       setTags(Array.isArray(post.tags) ? post.tags.join(',') : (post.tags || ''));
       setPublished(post.published || false);
-      setIsLoaded(true);
+      setIsInitialized(true);
     }
-  }, [post, isLoaded]);
+  }, [post, isInitialized]);
 
   async function save() {
     if (!slug || !post) return;

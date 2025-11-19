@@ -33,14 +33,16 @@ export default function AccountPage() {
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
   const [posts, setPosts] = useState<SimplePost[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    if (profile) {
+    if (profile && !isInitialized) {
       setBio(profile.bio || '');
       setAvatar(profile.avatar || '');
       setName(profile.name || '');
+      setIsInitialized(true);
     }
-  }, [profile]);
+  }, [profile, isInitialized]);
 
   useEffect(() => {
     if (!email) return;

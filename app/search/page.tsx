@@ -36,7 +36,13 @@ export default function SearchPage() {
     ? `/api/posts?q=${encodeURIComponent(debounced)}&page=${page}&limit=10`
     : `/api/posts?page=${page}&limit=10&published=true`;
   
-  const { data: response } = useSWR<{ posts: Post[]; pagination: any }>(searchUrl, fetcher);
+  type PaginationData = {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+  const { data: response } = useSWR<{ posts: Post[]; pagination: PaginationData }>(searchUrl, fetcher);
   const posts = response?.posts || [];
   const pagination = response?.pagination;
 

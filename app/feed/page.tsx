@@ -27,7 +27,13 @@ export default function FeedPage() {
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get("page") || "1", 10);
   const { data: profile } = useSWR(session ? "/api/users/me" : null, fetcher);
-  const { data: response } = useSWR<{ posts: Post[]; pagination: any }>(
+  type PaginationData = {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+  const { data: response } = useSWR<{ posts: Post[]; pagination: PaginationData }>(
     profile ? `/api/posts?page=${page}&limit=10` : null,
     fetcher
   );

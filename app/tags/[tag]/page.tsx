@@ -61,7 +61,20 @@ export default async function TagPage({
   );
 }
 
-function mapPost(row: any) {
+type PostRow = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  cover_image: string | null;
+  author_name: string;
+  author_email: string;
+  created_at: string;
+  tags: string[];
+  claps: number;
+};
+
+function mapPost(row: PostRow) {
   return {
     id: row.id,
     slug: row.slug,

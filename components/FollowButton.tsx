@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useSWRConfig } from "swr";
 
 type FollowButtonProps = {
   authorEmail: string;
@@ -12,6 +13,7 @@ type FollowButtonProps = {
 export function FollowButton({ authorEmail, initialFollowing }: FollowButtonProps) {
   const { data: session } = useSession();
   const router = useRouter();
+  const { mutate } = useSWRConfig();
   const [following, setFollowing] = useState(initialFollowing);
   const [loading, setLoading] = useState(false);
 
@@ -39,6 +41,7 @@ export function FollowButton({ authorEmail, initialFollowing }: FollowButtonProp
       }
       const data = await res.json();
       setFollowing(data.status === "followed");
+      mutate("/api/users/me");
     } catch (err) {
       console.error("Follow error:", err);
       alert("Failed to update follow status");
