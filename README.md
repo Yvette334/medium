@@ -90,7 +90,7 @@ Before you begin, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Yvette334/medium.git
 cd medium
 ```
 
@@ -329,11 +329,4 @@ This runs on every push and pull request to `main` or `master` branches.
 - Image optimization
 - SWR for efficient data fetching and caching
 
-## 📄 License
-
-This project is part of a Phase 2 Frontend Capstone project.
-
-## 🤝 Contributing
-
-This is a capstone project. For questions or issues, please refer to the project guidelines.
 
