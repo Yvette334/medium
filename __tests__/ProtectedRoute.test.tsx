@@ -4,6 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 
 const mockRouter = {
   push: jest.fn(),
+  replace: jest.fn(),
 };
 
 jest.mock('next/navigation', () => ({
@@ -13,6 +14,7 @@ jest.mock('next/navigation', () => ({
 describe('ProtectedRoute', () => {
   beforeEach(() => {
     mockRouter.push.mockClear();
+    mockRouter.replace.mockClear();
   });
 
   it('renders children when user is authenticated', () => {
@@ -41,7 +43,7 @@ describe('ProtectedRoute', () => {
       </SessionProvider>
     );
 
-    expect(mockRouter.push).toHaveBeenCalledWith('/auth/login');
+    expect(mockRouter.replace).toHaveBeenCalledWith('/auth/login');
   });
 });
 

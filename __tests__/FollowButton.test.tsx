@@ -24,17 +24,17 @@ describe('FollowButton', () => {
     expect(screen.getByText('Follow')).toBeInTheDocument();
   });
 
-  it('renders unfollow button when following', () => {
+  it('renders following state when already following', () => {
     render(
       <SessionProvider session={mockSession}>
         <FollowButton authorEmail="author@example.com" initialFollowing={true} />
       </SessionProvider>
     );
-    expect(screen.getByText('Unfollow')).toBeInTheDocument();
+    expect(screen.getByText('Following')).toBeInTheDocument();
   });
 
   it('toggles follow state on click', async () => {
-    mockFetch.mockResolvedValueOnce({ ok: true, json: async () => ({ following: true }) });
+    mockFetch.mockResolvedValueOnce({ ok: true, json: async () => ({ status: 'followed' }) });
     
     render(
       <SessionProvider session={mockSession}>
@@ -46,7 +46,7 @@ describe('FollowButton', () => {
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByText('Unfollow')).toBeInTheDocument();
+      expect(screen.getByText('Following')).toBeInTheDocument();
     });
   });
 });
